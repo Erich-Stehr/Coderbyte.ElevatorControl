@@ -9,5 +9,6 @@ namespace ElevatorControl
     {
         public int[] All();
         public void FloorRequest(int floor, int? direction = null);
+        public int? Next();
     }
 }

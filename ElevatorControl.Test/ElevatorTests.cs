@@ -27,13 +27,34 @@ namespace ElevatorControl.Test
         }
 
         [Fact]
-        public void WrongFloor()
+        public void FloorIsWrong()
         {
             var sut = new Elevator();
 
             void act() => sut.FloorRequest(10000, null);
 
             Assert.Throws<IndexOutOfRangeException>(act);
+        }
+
+        [Fact]
+        public void NullNextIfEmpty()
+        {
+            var sut = new Elevator();
+
+            var result = sut.Next();
+
+            Assert.Null(result);
+        }
+
+        [Fact]
+        public void NextZero()
+        {
+            var sut = new Elevator();
+            sut.FloorRequest(0);
+
+            var result = sut.Next();
+
+            Assert.Equal(0, result);
         }
     }
 }

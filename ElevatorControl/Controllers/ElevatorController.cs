@@ -42,5 +42,11 @@ namespace ElevatorControl.Controllers
 
             return Ok();
         }
+
+        [HttpPost]
+        IActionResult Next()
+        {
+            return Ok(_elevator.Next());
+        }
     }
 }
