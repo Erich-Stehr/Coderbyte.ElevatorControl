@@ -24,6 +24,7 @@ Accepted calls:
 - http, so no authentication? really?
 - Which environment? Assuming Visual Studio, C#, .NET Core
     - .NET Core 3.1 as the LTS will be supported longer than .NET Core 5.0
-- .
+- Assuming multiple elevators in API, will restrict to 1 in code
+- 
 
 ## 
