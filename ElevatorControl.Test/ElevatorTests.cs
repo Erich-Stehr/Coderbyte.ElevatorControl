@@ -1,14 +1,17 @@
-using System;
 using Xunit;
 
 namespace ElevatorControl.Test
 {
-    public class UnitTest1
+    public class ElevatorTests
     {
         [Fact]
-        public void Test1()
+        public void GetAllWhenEmpty()
         {
+            var sut = new Elevator();
 
+            var result = sut.All();
+
+            Assert.Equal(new int[0], result);
         }
     }
 }

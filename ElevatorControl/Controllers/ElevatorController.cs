@@ -11,11 +11,6 @@ namespace ElevatorControl.Controllers
     [Route("[controller]")]
     public class ElevatorController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
         private readonly ILogger<ElevatorController> _logger;
 
         public ElevatorController(ILogger<ElevatorController> logger)
@@ -24,16 +19,10 @@ namespace ElevatorControl.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public IEnumerable<int> All()
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
+
+            return new int[0];
         }
     }
 }
