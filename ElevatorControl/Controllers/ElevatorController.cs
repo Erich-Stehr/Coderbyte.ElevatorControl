@@ -8,18 +8,16 @@ using System.Threading.Tasks;
 namespace ElevatorControl.Controllers
 {
     [ApiController]
-    [Route("[controller]/[:id]")]
+    [Route("[controller]/{id}")]
     public class ElevatorController : ControllerBase
     {
         private readonly ILogger<ElevatorController> _logger;
         private readonly IElevator _elevator;
-        private readonly int _id;
 
-        public ElevatorController(ILogger<ElevatorController> logger, IElevator elevator, int id)
+        public ElevatorController(ILogger<ElevatorController> logger, IElevator elevator)
         {
             _logger = logger;
             _elevator = elevator;
-            _id = id;
         }
 
         [HttpGet]
@@ -44,7 +42,7 @@ namespace ElevatorControl.Controllers
         }
 
         [HttpPost]
-        IActionResult Next()
+        public IActionResult Next()
         {
             return Ok(_elevator.Next());
         }
