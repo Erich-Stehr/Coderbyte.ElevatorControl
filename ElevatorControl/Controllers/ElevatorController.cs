@@ -8,21 +8,39 @@ using System.Threading.Tasks;
 namespace ElevatorControl.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("[controller]/[:id]")]
     public class ElevatorController : ControllerBase
     {
         private readonly ILogger<ElevatorController> _logger;
+        private readonly IElevator _elevator;
+        private readonly int _id;
 
-        public ElevatorController(ILogger<ElevatorController> logger)
+        public ElevatorController(ILogger<ElevatorController> logger, IElevator elevator, int id)
         {
             _logger = logger;
+            _elevator = elevator;
+            _id = id;
         }
 
         [HttpGet]
         public IEnumerable<int> All()
         {
+            return _elevator.All();
+        }
 
-            return new int[0];
+        [HttpPut]
+        public IActionResult Put(int floor)
+        {
+            try
+            {
+                _elevator.FloorRequest(floor, null);
+            }
+            catch (IndexOutOfRangeException)
+            {
+                return BadRequest("Wrong floor");
+            }
+
+            return Ok();
         }
     }
 }
